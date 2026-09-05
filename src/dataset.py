@@ -4,6 +4,8 @@ import numpy as np
 from sklearn.datasets import fetch_openml
 from src.config import MNIST_RAW_PATH
 
+logger = logging.getLogger(__name__)
+
 def load_mnist_data():
     """
     Carrega o dataset MNIST. Se já existir em cache local, lê do disco.
