@@ -26,6 +26,12 @@ O projeto foi desenvolvido de maneira modularizada, com a seguinte estrutura de 
 │   ├── config.py
 ```
 
+## Etapas do projeto:
+
+Fase 1: Exploração e análise do dataset MNIST, incluindo visualização de amostras de dígitos e análise da distribuição de classes.
+
+Fase 2:
+
 ## Idioma do código:
 
 - Nomes de funções em inglês;
