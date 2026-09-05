@@ -1,3 +1,6 @@
+"""
+Módulo de carregamento e/ou manipulação do dataset MNIST.
+"""
 
 import logging
 import numpy as np

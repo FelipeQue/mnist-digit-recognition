@@ -1,3 +1,7 @@
+"""
+Módulo de plotagem de gráficos e imagens para o projeto Cernere.
+"""
+
 from pathlib import Path
 import numpy as np
 import matplotlib.pyplot as plt
