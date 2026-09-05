@@ -20,19 +20,20 @@ def split_data(
 
     Proporção padrão definida em config.py (70% Treino, 10% Validação, 20% Teste).
 
-    Parameters
+    Parâmetros
     ----------
     X : np.ndarray
         Matriz de atributos (pixels).
     y : np.ndarray
         Vetor de rótulos.
 
-    Returns
+    Retorna
     -------
     Tuple[np.ndarray, ...]
         (X_train, X_val, X_test, y_train, y_val, y_test)
+
     """
-    # 1. Primeira divisão: Separa os 20% de Teste
+
     X_temp, X_test, y_temp, y_test = train_test_split(
         X,
         y,
@@ -41,8 +42,6 @@ def split_data(
         random_state=RANDOM_STATE
     )
 
-    # 2. Segunda divisão: Separa o restante (80%) em Treino (70% do total) e Validação (10% do total)
-    # Como X_temp representa 80% do total, a proporção de validação sobre X_temp é 0.10 / 0.80 = 0.125
     relative_val_size = VAL_SIZE / (TRAIN_SIZE + VAL_SIZE)
 
     X_train, X_val, y_train, y_val = train_test_split(
