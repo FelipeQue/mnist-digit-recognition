@@ -14,6 +14,7 @@ def load_mnist_data():
     if MNIST_RAW_PATH.exists():
         logging.info(f"Carregando MNIST do cache local: {MNIST_RAW_PATH}")
         data = np.load(MNIST_RAW_PATH)
+        logging.info(f"Dataset carregado com sucesso do cache local.")
         return data['X'], data['y']
     
     logging.info("Baixando dataset MNIST do OpenML (primeira execução)...")
