@@ -14,3 +14,7 @@ RAW_DATA_DIR = DATA_DIR / "raw"
 RAW_DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 MNIST_RAW_PATH = RAW_DATA_DIR / "mnist_784.npz"
+
+OUTPUTS_DIR = ROOT_DIR / "outputs"
+
+IMAGES_OUTPUT_DIR = OUTPUTS_DIR / "images"
