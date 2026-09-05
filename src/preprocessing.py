@@ -58,3 +58,32 @@ def split_data(
     logger.info(f" - Teste: {X_test.shape[0]} amostras ({X_test.shape[0]/len(X):.1%})")
 
     return X_train, X_val, X_test, y_train, y_val, y_test
+
+def scale_pixels(
+    X_train: np.ndarray,
+    X_val: np.ndarray,
+    X_test: np.ndarray
+) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """Redimensiona os valores de pixels do intervalo [0, 255] para a escala [0.0, 1.0].
+
+    Parâmetros
+    ----------
+    X_train : np.ndarray
+        Dados de treino.
+    X_val : np.ndarray
+        Dados de validação.
+    X_test : np.ndarray
+        Dados de teste.
+
+    Retorna
+    -------
+    Tuple[np.ndarray, np.ndarray, np.ndarray]
+        Conjuntos (X_train_scaled, X_val_scaled, X_test_scaled) no tipo float32.
+    """
+    # Garante tipo float32
+    X_train_scaled = X_train.astype(np.float32) / 255.0
+    X_val_scaled = X_val.astype(np.float32) / 255.0
+    X_test_scaled = X_test.astype(np.float32) / 255.0
+
+    logger.info("Normalização realizada com sucesso: pixels ajustados para a escala [0.0, 1.0].")
+    return X_train_scaled, X_val_scaled, X_test_scaled
