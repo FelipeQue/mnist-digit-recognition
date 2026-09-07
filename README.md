@@ -6,12 +6,15 @@ O nome do projeto é a palavra "cernere" (pronuncia-se "quernere") do latim, que
 
 ## Bibliotecas e Dependências:
 
-- Python
+- Python 3.12.10 (O TensorFlow não funciona com uma versão superior)
 - Pandas 3.0.5
-- Numpy 2.5.2
+- Numpy 2.5.3
 - Matplotlib 3.11.1
 - Scikit-learn 1.9.0
 - XGBoost 3.4.1
+- TensorFlow 2.21.0
+- Keras 3.15.1
+- Keras-tuner 1.4.8
 
 - Foi utilizado um ambiente virtual para uso controlado das dependências do projeto.
 
