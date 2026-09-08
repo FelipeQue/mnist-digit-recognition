@@ -3,8 +3,10 @@ Módulo de plotagem de gráficos e imagens para o projeto Cernere.
 """
 
 from pathlib import Path
+from typing import Dict
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
 import logging
 from typing import Optional
 from src.config import IMAGES_OUTPUT_DIR
@@ -59,3 +61,52 @@ def plot_digit_samples(
 
     plt.show()
     plt.close()
+
+def plot_confusion_matrices(
+    predictions_dict: Dict[str, np.ndarray],
+    y_true: np.ndarray,
+    figsize: tuple = (22, 6)
+) -> None:
+    """Renderiza heatmaps 10x10 da matriz de confusão para múltiplos modelos.
+
+    Parâmetros
+    ----------
+    predictions_dict : Dict[str, np.ndarray]
+        Dicionário mapeando o nome do modelo ao seu vetor de predições.
+    y_true : np.ndarray
+        Vetor com os rótulos reais de teste.
+    figsize : tuple, default=(22, 6)
+        Dimensões da figura do Matplotlib.
+    """
+    from sklearn.metrics import confusion_matrix
+
+    num_models = len(predictions_dict)
+    fig, axes = plt.subplots(1, num_models, figsize=figsize)
+
+    if num_models == 1:
+        axes = [axes]
+
+    fig.suptitle(
+        "Matrizes de Confusão 10x10 no conjunto de teste",
+        fontsize=16,
+        fontweight="bold"
+    )
+
+    for ax, (name, y_pred) in zip(axes, predictions_dict.items()):
+        cm = confusion_matrix(y_true, y_pred)
+        sns.heatmap(
+            cm,
+            annot=True,
+            fmt="d",
+            cmap="Blues",
+            cbar=False,
+            ax=ax,
+            xticklabels=range(10),
+            yticklabels=range(10)
+        )
+        ax.set_title(f"Modelo: {name}", fontsize=14)
+        ax.set_xlabel("Dígito previsto (Predicted)", fontsize=12)
+        ax.set_ylabel("Dígito real (True)", fontsize=12)
+
+    plt.tight_layout()
+    plt.show()

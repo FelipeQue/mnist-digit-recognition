@@ -10,6 +10,7 @@ O nome do projeto é a palavra "cernere" (pronuncia-se "quernere") do latim, que
 - Pandas 3.0.5
 - Numpy 2.5.3
 - Matplotlib 3.11.1
+- Seaborn 0.13.2
 - Scikit-learn 1.9.0
 - XGBoost 3.4.1
 - TensorFlow 2.21.0
