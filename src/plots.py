@@ -104,7 +104,7 @@ def plot_confusion_matrix(
     y_true : np.ndarray
         Vetor com os rótulos reais de teste.
     y_pred : np.ndarray
-        Vetor com os rótulos preditos pelo modelo.
+        Vetor com os rótulos previstos pelo modelo.
     model_name : str
         Nome do modelo para exibição no título e formatação do nome do arquivo.
     save_dir : Path | str | None, default=IMAGES_OUTPUT_DIR
@@ -139,8 +139,8 @@ def plot_confusion_matrix(
     )
 
     ax.set_title(f"Matriz de Confusão: {model_name}", fontsize=13, fontweight="bold")
-    ax.set_xlabel("Dígito Preditivo (Predicted)", fontsize=11)
-    ax.set_ylabel("Dígito Real (True)", fontsize=11)
+    ax.set_xlabel("Dígito previsto (Predicted)", fontsize=11)
+    ax.set_ylabel("Dígito real (True)", fontsize=11)
 
     # Padronização e sanitização do nome do arquivo
     file_stub = model_name.lower().replace(" ", "_").replace("(", "").replace(")", "")
