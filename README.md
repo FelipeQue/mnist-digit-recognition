@@ -33,6 +33,7 @@ O projeto foi desenvolvido de maneira modularizada, com a seguinte estrutura de 
 ├── src
 │   ├── config.py
 │   ├── dataset.py
+│   ├── evaluation.py
 │   ├── models.py
 │   ├── plots.py
 │   ├── preprocessing.py
@@ -45,6 +46,8 @@ Fase 1: Exploração e análise do dataset MNIST, incluindo visualização de am
 Fase 2: Pré-processamento dos dados, envolvendo normalização e divisão em conjuntos de treino, validação e teste.
 
 Fase 3: Desenvolvimento e treinamento de modelos de aprendizado de máquina, incluindo KNN e XGBoost, com otimização de hiperparâmetros.
+
+Fase 4: Avaliação dos modelos treinados, incluindo métricas de desempenho, matrizes de confusão e relatórios de classificação.
 
 ## Idioma do código:
 
