@@ -4,6 +4,7 @@ import logging
 import time
 import numpy as np
 import pandas as pd
+import keras
 from pathlib import Path
 from sklearn.metrics import (
     accuracy_score,
@@ -15,6 +16,10 @@ from sklearn.metrics import (
 )
 
 logger = logging.getLogger(__name__)
+
+def _is_keras_model(model: object) -> bool:
+    """Retorna se ``model`` é uma instância de um modelo Keras."""
+    return isinstance(model, keras.Model)
 
 def generate_predictions(
     model: object,
@@ -80,8 +85,7 @@ def evaluate_models(
     predictions = {}
 
     for name, model in models.items():
-        # Verificação flexível para Keras ou detecção via string de nome
-        is_keras = "keras" in name.lower() or hasattr(model, "predict_proba")
+        is_keras = _is_keras_model(model)
         
         y_pred, infer_time = generate_predictions(model, X_test, is_keras=is_keras)
         predictions[name] = y_pred
