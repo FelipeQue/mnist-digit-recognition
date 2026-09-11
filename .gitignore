@@ -226,3 +226,6 @@ keras_tuning_logs/
 keras_tuner_dir/
 *.h5
 *.keras
+
+#MacOS Stuff
+.DS_Store
