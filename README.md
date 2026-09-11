@@ -26,6 +26,7 @@ O projeto foi desenvolvido de maneira modularizada, com a seguinte estrutura de 
 ```
 ├── data
 │   ├── raw
+│   ├── custom
 ├── notebooks
 │   ├── cernere.ipynb
 ├── outputs
@@ -35,6 +36,7 @@ O projeto foi desenvolvido de maneira modularizada, com a seguinte estrutura de 
 │   ├── dataset.py
 │   ├── evaluation.py
 │   ├── models.py
+│   ├── ood.py
 │   ├── plots.py
 │   ├── preprocessing.py
 ```
@@ -48,6 +50,42 @@ Fase 2: Pré-processamento dos dados, envolvendo normalização e divisão em co
 Fase 3: Desenvolvimento e treinamento de modelos de aprendizado de máquina, incluindo KNN e XGBoost, com otimização de hiperparâmetros.
 
 Fase 4: Avaliação dos modelos treinados, incluindo métricas de desempenho, matrizes de confusão e relatórios de classificação.
+
+Fase 5.1:
+
+Fase 5.2:
+
+Fase 5.3: Inferência com Imagens Manuscritas Próprias
+
+## Resultados da inferência com imagens manuscritas próprias:
+
+Foi feito um teste de inferência com imagens manuscritas próprias, utilizando o melhor modelo treinado (MLP). Escrevi digitalmente os numerais 4 e 9 em imagens PNG com fundo branco e 400 pixels de largura e altura.
+
+<p align="center">
+  <img src="data/custom/custom-4.png" alt="4 manuscrito" width="45%" />
+  <img src="data/custom/custom-9.png" alt="9 manuscrito" width="45%" />
+</p>
+
+As imagens foram processadas e normalizadas para o formato esperado pelo modelo conforme o seguinte pipeline:
+
+- Conversão em escala de cinza ;
+- Inversão caso o fundo seja claro;
+- Recorte da imagem em um quadrado de 20x20;
+- Centralização da imagem num quadrado de 28x28 (mantendo um padding ao redor do desenho do numeral);
+- Normalização dos valores numéricos de cor dos pixels do intervalo `[0, 255]` para o intervalo continuo `[0.0, 1.0]`;
+- Alinhamento pelo Centro de Massa: deslocamento (*shift*) espacial dos eixos da matriz usando a biblioteca `scipy.ndimage` para alinhar o centro de gravidade do traço ao centro geométrico da imagem (`14.0, 14.0`);
+- Estruturação em Tabela (DataFrame): conversão da matriz processada final em um formato bidimensional `28x28` para inspeção tabular dos pixels.
+
+No notebook essa tabela passa por um achatamento (`1x784`) para enfim ser submetida à predição pela rede neural.
+
+![Predição do Dígito 4](../outputs/images/prediction_custom-4.png)
+![Predição do Dígito 9](../outputs/images/prediction_custom-9.png)
+
+As inferências do modelo MLP nas amostras customizadas parecem refletir o impacto direto do estilo de escrita na distribuição de probabilidades
+
+Dígito 4 (Confiança: 96,0%): A grafia em estilo "barco à vela" (com topo fechado, linhas retas e intersecção proeminente) tem uma assinatura geométrica marcante que preveniu a confusão clássica do MNIST entre 4 e 9 (comum em traços com topo aberto), garantindo alta certeza preditiva.
+
+Dígito 9 (Confiança: 76,6% vs. 20,0% para o Dígito 3): A curvatura da cabeça e o alinhamento da haste geraram uma sobreposição parcial no espaço de características com o dígito 3. Embora o modelo tenha classificado a imagem corretamente, a distribuição de probabilidades capturou com precisão a ambiguidade morfológica do traço.
 
 ## Idioma do código:
 
