@@ -89,3 +89,36 @@ def train_masked_mlp(
     logger.info("Treinamento restrito concluído em %.2fs", train_time)
 
     return masked_mlp, train_time
+
+
+def filter_ood_dataset(
+    X: np.ndarray,
+    y: np.ndarray,
+    target_classes: list[int]
+) -> tuple[np.ndarray, np.ndarray]:
+    """Isola exclusivamente as classes especificadas (Out-of-Distribution).
+
+    Parâmetros
+    ----------
+    X : np.ndarray
+        Matriz de características (pixels escalados).
+    y : np.ndarray
+        Vetor de rótulos.
+    target_classes : list[int]
+        Lista de dígitos a serem mantidos no dataset de teste OOD.
+
+    Retorna
+    -------
+    tuple[np.ndarray, np.ndarray]
+        Subconjunto contendo apenas as imagens das target_classes.
+    """
+    mask = np.isin(y, target_classes)
+    X_ood, y_ood = X[mask], y[mask]
+
+    logger.info(
+        "Dataset OOD isolado para as classes %s. Amostras mantidas: %d de %d",
+        target_classes,
+        len(y_ood),
+        len(y)
+    )
+    return X_ood, y_ood
