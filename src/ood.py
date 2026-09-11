@@ -122,3 +122,33 @@ def filter_ood_dataset(
         len(y)
     )
     return X_ood, y_ood
+
+
+def analyze_ood_confidence(
+    model: Sequential,
+    X_ood: np.ndarray
+) -> dict[str, float | np.ndarray]:
+    """Calcula predições, probabilidades máximas e métricas de confiança para dados OOD.
+
+    Parâmetros
+    ----------
+    model : Sequential
+        Modelo Keras treinado.
+    X_ood : np.ndarray
+        Matriz de características contendo apenas amostras fora da distribuição.
+
+    Retorna
+    -------
+    dict[str, float | np.ndarray]
+        Dicionário com rótulos preditos, probabilidades atribuídas e estatísticas.
+    """
+    y_probs = model.predict(X_ood, verbose=0)
+    max_confidences = np.max(y_probs, axis=1)
+    y_pred = np.argmax(y_probs, axis=1)
+
+    return {
+        "y_pred": y_pred,
+        "max_confidences": max_confidences,
+        "mean_confidence": float(np.mean(max_confidences)),
+        "median_confidence": float(np.median(max_confidences))
+    }
