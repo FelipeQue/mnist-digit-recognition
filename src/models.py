@@ -161,3 +161,11 @@ def build_hyper_mlp(hp) -> Sequential:
         activation=activation,
         learning_rate=learning_rate
     )
+
+def create_best_mlp() -> Sequential:
+    """Cria e compila a MLP com os melhores hiperparâmetros obtidos na Fase 3."""
+    return create_multilayer_perceptron(
+        hidden_units=128,
+        activation="relu",
+        learning_rate=0.001
+    )
