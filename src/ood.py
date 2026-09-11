@@ -89,3 +89,66 @@ def train_masked_mlp(
     logger.info("Treinamento restrito concluído em %.2fs", train_time)
 
     return masked_mlp, train_time
+
+
+def filter_ood_dataset(
+    X: np.ndarray,
+    y: np.ndarray,
+    target_classes: list[int]
+) -> tuple[np.ndarray, np.ndarray]:
+    """Isola exclusivamente as classes especificadas (Out-of-Distribution).
+
+    Parâmetros
+    ----------
+    X : np.ndarray
+        Matriz de características (pixels escalados).
+    y : np.ndarray
+        Vetor de rótulos.
+    target_classes : list[int]
+        Lista de dígitos a serem mantidos no dataset de teste OOD.
+
+    Retorna
+    -------
+    tuple[np.ndarray, np.ndarray]
+        Subconjunto contendo apenas as imagens das target_classes.
+    """
+    mask = np.isin(y, target_classes)
+    X_ood, y_ood = X[mask], y[mask]
+
+    logger.info(
+        "Dataset OOD isolado para as classes %s. Amostras mantidas: %d de %d",
+        target_classes,
+        len(y_ood),
+        len(y)
+    )
+    return X_ood, y_ood
+
+
+def analyze_ood_confidence(
+    model: Sequential,
+    X_ood: np.ndarray
+) -> dict[str, float | np.ndarray]:
+    """Calcula predições, probabilidades máximas e métricas de confiança para dados OOD.
+
+    Parâmetros
+    ----------
+    model : Sequential
+        Modelo Keras treinado.
+    X_ood : np.ndarray
+        Matriz de características contendo apenas amostras fora da distribuição.
+
+    Retorna
+    -------
+    dict[str, float | np.ndarray]
+        Dicionário com rótulos preditos, probabilidades atribuídas e estatísticas.
+    """
+    y_probs = model.predict(X_ood, verbose=0)
+    max_confidences = np.max(y_probs, axis=1)
+    y_pred = np.argmax(y_probs, axis=1)
+
+    return {
+        "y_pred": y_pred,
+        "max_confidences": max_confidences,
+        "mean_confidence": float(np.mean(max_confidences)),
+        "median_confidence": float(np.median(max_confidences))
+    }
