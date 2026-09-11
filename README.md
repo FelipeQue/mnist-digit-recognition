@@ -62,8 +62,8 @@ Fase 5.3: Inferência com Imagens Manuscritas Próprias
 Foi feito um teste de inferência com imagens manuscritas próprias, utilizando o melhor modelo treinado (MLP). Escrevi digitalmente os numerais 4 e 9 em imagens PNG com fundo branco e 400 pixels de largura e altura.
 
 <p align="center">
-  <img src="data/custom/custom-4.png" alt="4 manuscrito" width="45%" />
-  <img src="data/custom/custom-9.png" alt="9 manuscrito" width="45%" />
+  <img src="data/custom/custom-4.png" alt="4 manuscrito" width="40%" />
+  <img src="data/custom/custom-9.png" alt="9 manuscrito" width="40%" />
 </p>
 
 As imagens foram processadas e normalizadas para o formato esperado pelo modelo conforme o seguinte pipeline:
@@ -78,8 +78,8 @@ As imagens foram processadas e normalizadas para o formato esperado pelo modelo 
 
 No notebook essa tabela passa por um achatamento (`1x784`) para enfim ser submetida à predição pela rede neural.
 
-![Predição do Dígito 4](../outputs/images/prediction_custom-4.png)
-![Predição do Dígito 9](../outputs/images/prediction_custom-9.png)
+![Predição do Dígito 4](outputs/images/prediction_custom-4.png)
+![Predição do Dígito 9](outputs/images/prediction_custom-9.png)
 
 As inferências do modelo MLP nas amostras customizadas parecem refletir o impacto direto do estilo de escrita na distribuição de probabilidades
 
