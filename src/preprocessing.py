@@ -139,10 +139,10 @@ def process_custom_digit_to_df(
     upper_left = ((28 - img.width) // 2, (28 - img.height) // 2)
     canvas.paste(img, upper_left)
 
-    # 4. Normalizar para [0.0, 1.0]
+    # Normalizar para [0.0, 1.0]
     img_array = np.array(canvas, dtype=np.float32) / 255.0
 
-    # 5. Centralização pelo Centro de Massa (Padrão MNIST)
+    # Centralização pelo Centro de Massa (Padrão MNIST)
     cy, cx = center_of_mass(img_array)
     if not np.isnan(cy) and not np.isnan(cx):
         shift_y = np.round(14.0 - cy)
