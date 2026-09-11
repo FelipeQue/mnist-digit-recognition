@@ -152,3 +152,61 @@ def plot_confusion_matrix(
         plt.tight_layout()
         plt.show()
         plt.close(fig)
+
+
+def plot_custom_digit_prediction(
+    img_array: np.ndarray,
+    probabilities: np.ndarray,
+    image_title: str = "Dígito Customizado",
+    save_path: str | None = None
+) -> None:
+    """Plota a imagem processada 28x28 ao lado do gráfico de barras de probabilidades.
+
+    Parâmetros
+    ----------
+    img_array : np.ndarray
+        Matriz 28x28 do dígito processado.
+    probabilities : np.ndarray
+        Vetor com as 10 probabilidades de saída da rede neural.
+    image_title : str, padrão="Dígito Customizado"
+        Título descritivo para a imagem.
+    save_path : str | None, padrão=None
+        Caminho para salvar a figura gerada.
+    """
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4))
+
+    # Subplot 1: Imagem Processada
+    ax1.imshow(img_array, cmap="gray")
+    ax1.set_title(image_title, fontsize=12, fontweight="bold")
+    ax1.axis("off")
+
+    # Subplot 2: Gráfico de Probabilidades
+    predicted_class = int(np.argmax(probabilities))
+    colors = ["#2b5c8f" if i != predicted_class else "#d9534f" for i in range(10)]
+
+    bars = ax2.bar(range(10), probabilities, color=colors, edgecolor="black", alpha=0.85)
+    ax2.set_xticks(range(10))
+    ax2.set_xlabel("Dígito Previsto", fontsize=10)
+    ax2.set_ylabel("Probabilidade", fontsize=10)
+    ax2.set_ylim(0, 1.05)
+    ax2.set_title(f"Predição Final: {predicted_class}", fontsize=12, fontweight="bold")
+    ax2.grid(axis="y", linestyle="--", alpha=0.5)
+
+    # Anotar percentual no topo da maior barra
+    ax2.text(
+        predicted_class,
+        probabilities[predicted_class] + 0.02,
+        f"{probabilities[predicted_class]:.1%}",
+        ha="center",
+        va="bottom",
+        fontweight="bold",
+        color="#d9534f"
+    )
+
+    plt.tight_layout()
+
+    if save_path:
+        plt.savefig(save_path, dpi=300, bbox_inches="tight")
+        
+    plt.show()
+    plt.close(fig)

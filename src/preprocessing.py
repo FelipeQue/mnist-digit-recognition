@@ -152,7 +152,7 @@ def process_custom_digit_to_df(
     # Garantir limites [0.0, 1.0] após a interpolação do shift
     img_array = np.clip(img_array, 0.0, 1.0)
 
-    # 6. Estruturar a tabela Pandas (28x28)
+    # Estruturar a tabela Pandas (28x28)
     df_pixels = pd.DataFrame(
         img_array,
         index=[f"row_{i}" for i in range(28)],
