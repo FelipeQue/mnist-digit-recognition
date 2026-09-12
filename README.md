@@ -92,9 +92,9 @@ No notebook essa tabela passa por um achatamento (`1x784`) para enfim ser submet
 
 As inferências do modelo MLP nas amostras customizadas parecem refletir o impacto direto do estilo de escrita na distribuição de probabilidades
 
-Dígito 4 (Confiança: 96,0%): A grafia em estilo "barco à vela" (com topo fechado, linhas retas e intersecção proeminente) tem uma assinatura geométrica marcante que preveniu a confusão clássica do MNIST entre 4 e 9 (comum em traços com topo aberto), garantindo alta certeza preditiva.
+Dígito 4: Acertou com confiança de 97,3%. A grafia em estilo "barco à vela" (com topo fechado, linhas retas e intersecção proeminente) tem uma assinatura geométrica marcante que preveniu a confusão clássica do MNIST entre 4 e 9 (comum em traços com topo aberto), garantindo alta certeza preditiva.
 
-Dígito 9 (Confiança: 76,6% vs. 20,0% para o Dígito 3): A curvatura da cabeça e o alinhamento da haste geraram uma sobreposição parcial no espaço de características com o dígito 3. Embora o modelo tenha classificado a imagem corretamente, a distribuição de probabilidades capturou com precisão a ambiguidade morfológica do traço.
+Dígito 9: Errou com confiança de 89,8%. A curvatura da cabeça e da haste geraram uma sobreposição parcial no espaço de características com o dígito 3, exemplificando um dos tipos de erro encontrados no treinamento do modelo. A probabilidade de 8,36% de que a imagem do 9 fosse realmente um 9 indica que o modelo ainda reconheceu parcialmente as características do numeral, mas não o suficiente para uma predição correta.
 
 ## Idioma do código:
 
