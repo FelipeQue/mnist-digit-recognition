@@ -10,6 +10,7 @@ from xgboost import XGBClassifier
 from keras.models import Sequential
 from keras.layers import Dense, Dropout
 from keras.optimizers import Adam
+from src.config import RANDOM_STATE
 
 logger = logging.getLogger(__name__)
 
@@ -47,7 +48,7 @@ def build_xgboost(
     max_depth: int = 6, 
     learning_rate: float = 0.1, 
     eval_metric: XGBEvalMetricType = "mlogloss",
-    random_state: int = 42,
+    random_state: int = RANDOM_STATE,
     n_jobs: int = -1
 ) -> XGBClassifier:
     """Instancia o modelo XGBoost Classifier.
@@ -62,7 +63,7 @@ def build_xgboost(
         Taxa de aprendizado.
     eval_metric : XGBEvalMetricType, default='mlogloss'
         Métrica de avaliação.
-    random_state : int, default=42
+    random_state : int, default=RANDOM_STATE
         Semente para reprodutibilidade.
 
     Retorna
