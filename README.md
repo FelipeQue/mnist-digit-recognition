@@ -4,11 +4,16 @@ Projeto de visão computacional com o desenvolvimento, comparação e avaliaçã
 
 O nome dado a este projeto é a palavra "cernere" (pronuncia-se "quérnere") do latim, que significa "discernir"/"distinguir".
 
+O objetivo do projeto é encontrar um modelo preditivo para reconhecer dígitos manuscritos a partir de imagens. Reconhecer numerais com precisão é um requisito fundamental para automatizar a leitura de formulários, documentos postais e transações bancárias, minimizando erros operacionais e demonstrando a capacidade dos modelos em interpretar padrões visuais complexos e variados.
+
 O Cernere inclui etapas de pré-processamento, treinamento de modelos, avaliação de desempenho, experimentos com classes ocultadas e teste de generalização, e ainda inferência com imagens manuscritas próprias.
 
 ## 📊 O Dataset e pré-processamento
 
 *Dataset:* MNIST (Modified National Institute of Standards and Technology database), obtido da biblioteca `sklearn.datasets`.
+
+As imagens que vieram a compor este dataset foram coletadas do quadro de funcionários do United States Census Bureau e de estudantes do ensino médio estadunidense. <a href="https://en.wikipedia.org/wiki/MNIST_database" target="_blank" rel="noopener noreferrer">Fonte</a>
+
 - Dimensões do input: Imagens em escala de cinza de $28 \times 28$ pixels, aplanadas em vetores contínuos de $784$ colunas/features.
 - Escalamento: O projeto realiza uma normalização dos valores numéricos dos pixels do intervalo bruto $[0, 255]$ para o intervalo $[0.0, 1.0]$.
 - Amostragem: $70.000$ amostras rotuladas divididas em conjuntos de treino, validação e teste, na proporção 70-10-20.
@@ -120,7 +125,6 @@ Dígito 9: Errou com confiança de 89,8%. A curvatura da cabeça e da haste gera
 - Discussão e explicações no notebook em português.
 
 A ideia aqui foi deixar o código em si acessível para a comunidade desenvolvedora, mas com comentários e explicações voltados para o contexto avaliativo do SCTEC.
-
 
 ## 🎬 Vídeo sobre o projeto
 
