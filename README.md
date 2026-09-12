@@ -13,7 +13,6 @@ O Cernere inclui etapas de pré-processamento, treinamento de modelos, avaliaç�
 - Escalamento: O projeto realiza uma normalização dos valores numéricos dos pixels do intervalo bruto $[0, 255]$ para o intervalo $[0.0, 1.0]$.
 - Distribuição: $70.000$ amostras rotuladas divididas em conjuntos de treino, validação e teste, na proporção 70-10-20.
 
-Primeiras ocorrências de cada dígito no MNIST:
 ![Primeiras ocorrências de cada dígito no MNIST](outputs/images/digit_first_samples.png)
 
 ## Bibliotecas e Dependências:
@@ -37,12 +36,13 @@ O projeto foi desenvolvido de maneira modularizada, com a seguinte estrutura de 
 
 ```
 ├── data
-│   ├── raw
 │   ├── custom
+│   ├── raw
 ├── notebooks
 │   ├── cernere.ipynb
 ├── outputs
 │   ├── images
+│   ├── models
 ├── src
 │   ├── config.py
 │   ├── dataset.py
