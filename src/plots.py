@@ -118,7 +118,7 @@ def plot_confusion_matrix(
     dpi : int, default=300
         Resolução da imagem salva em disco.
     """
-    cm = confusion_matrix(y_true, y_pred)
+    cm = confusion_matrix(y_true, y_pred, labels=np.arange(10))
 
     show_plot = False
     if ax is None:
