@@ -2,7 +2,16 @@
 
 Projeto de visão computacional com o desenvolvimento, comparação e avaliação de algoritmos de aprendizado de máquina e redes neurais no reconhecimento de dígitos manuscritos (MNIST). Projeto desenvolvido para o curso Desenvolvimento de IA para Análise Preditiva do programa SCTEC.
 
-O nome do projeto é a palavra "cernere" (pronuncia-se "quernere") do latim, que significa "distinguir".
+O nome dado a este produto é a palavra "cernere" (pronuncia-se "quernere") do latim, que significa "distinguir".
+
+O Cernere inclui etapas de pré-processamento, treinamento de modelos, avaliação de desempenho, experimentos com classes ocultadas e teste de generalização extrema, e ainda inferência com imagens manuscritas próprias.
+
+## O Dataset e pré-processamento
+
+*Dataset:* MNIST (Modified National Institute of Standards and Technology database), obtido da biblioteca `sklearn.datasets`.
+- Dimensões do Input: Imagens em escala de cinza de $28 \times 28$ pixels, aplanadas em vetores contínuos de $784$ colunas/features.
+- Escalamento: Normalização dos valores numéricos dos pixels do intervalo bruto $[0, 255]$ para o intervalo $[0.0, 1.0]$.
+- Distribuição: $70.000$ amostras rotuladas divididas em conjuntos de treino, validação e teste, na proporção 70-10-20.
 
 ## Bibliotecas e Dependências:
 
@@ -51,9 +60,9 @@ Fase 3: Desenvolvimento e treinamento de modelos de aprendizado de máquina, inc
 
 Fase 4: Avaliação dos modelos treinados, incluindo métricas de desempenho, matrizes de confusão e relatórios de classificação.
 
-Fase 5.1:
+Fase 5.1: Treinamento Restrito com Classes Ocultadas (Class Masking)
 
-Fase 5.2:
+Fase 5.2: Teste de Generalização Extrema (Inferência OOD)
 
 Fase 5.3: Inferência com Imagens Manuscritas Próprias
 
