@@ -10,8 +10,11 @@ O Cernere inclui etapas de pré-processamento, treinamento de modelos, avaliaç�
 
 *Dataset:* MNIST (Modified National Institute of Standards and Technology database), obtido da biblioteca `sklearn.datasets`.
 - Dimensões do Input: Imagens em escala de cinza de $28 \times 28$ pixels, aplanadas em vetores contínuos de $784$ colunas/features.
-- Escalamento: Normalização dos valores numéricos dos pixels do intervalo bruto $[0, 255]$ para o intervalo $[0.0, 1.0]$.
+- Escalamento: O projeto realiza uma normalização dos valores numéricos dos pixels do intervalo bruto $[0, 255]$ para o intervalo $[0.0, 1.0]$.
 - Distribuição: $70.000$ amostras rotuladas divididas em conjuntos de treino, validação e teste, na proporção 70-10-20.
+
+Primeiras ocorrências de cada dígito no MNIST:
+![Primeiras ocorrências de cada dígito no MNIST](outputs/images/digit_first_samples.png)
 
 ## Bibliotecas e Dependências:
 
