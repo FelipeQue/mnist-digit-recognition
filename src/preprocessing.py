@@ -5,7 +5,6 @@ Módulo de preparação e divisão de dados e de processamento de imagens para o
 import numpy as np
 import pandas as pd
 import logging
-from typing import Tuple
 from pathlib import Path
 from PIL import Image, ImageOps
 from scipy.ndimage import center_of_mass, shift
@@ -19,7 +18,7 @@ logger = logging.getLogger(__name__)
 def split_data(
     X: np.ndarray,
     y: np.ndarray
-) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
     """Divide os dados em conjuntos de Treino, Validação e Teste com estratificação.
 
     Proporção padrão definida em config.py (70% Treino, 10% Validação, 20% Teste).
@@ -33,7 +32,7 @@ def split_data(
 
     Retorna
     -------
-    Tuple[np.ndarray, ...]
+    tuple[np.ndarray, ...]
         (X_train, X_val, X_test, y_train, y_val, y_test)
 
     """
@@ -67,7 +66,7 @@ def scale_pixels(
     X_train: np.ndarray,
     X_val: np.ndarray,
     X_test: np.ndarray
-) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     """Redimensiona os valores de pixels do intervalo [0, 255] para a escala [0.0, 1.0].
 
     Parâmetros
@@ -81,7 +80,7 @@ def scale_pixels(
 
     Retorna
     -------
-    Tuple[np.ndarray, np.ndarray, np.ndarray]
+    tuple[np.ndarray, np.ndarray, np.ndarray]
         Conjuntos (X_train_scaled, X_val_scaled, X_test_scaled) no tipo float32.
     """
     # Garante tipo float32
