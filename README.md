@@ -126,7 +126,15 @@ Dígito 9: Errou com confiança de 89,8%. A curvatura da cabeça e da haste gera
 
 A ideia aqui foi deixar o código em si acessível para a comunidade desenvolvedora, mas com comentários e explicações voltados para o contexto avaliativo do SCTEC.
 
-## 🎬 Vídeo sobre o projeto
+## 🎬 Vídeo sobre o projeto:
 
 [Vídeo]()
 <sub>*Dica: Segure Ctrl / Cmd ao clicar para abrir o vídeo em uma nova aba.*</sub>
+
+## Melhorias possíveis para o projeto:
+
+- Teste de inferência com imagens de letras: para melhor avaliar a capacidade do modelo em lidar com dados fora da distribuição (OOD).
+
+- Melhoria da reprodutibilidade dos experimentos: estabelecer um pipeline de registro dos hiperparâmetros e métricas em arquivos de configuração ou ferramentas de acompanhamento de experimentos.
+
+- Interface de demonstração: criar uma interface simples para permitir o envio de imagens manuscritas e exibir a previsão do modelo junto às probabilidades das classes.
