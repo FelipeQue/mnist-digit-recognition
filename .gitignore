@@ -227,5 +227,7 @@ keras_tuner_dir/
 *.h5
 *.keras
 
+!outputs/models/best_mlp_model.keras
+
 #MacOS Stuff
 .DS_Store

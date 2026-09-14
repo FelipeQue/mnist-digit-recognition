@@ -132,7 +132,7 @@ def get_top_confusions(
     list[tuple[tuple[int, int], int]]
         Lista de tuplas contendo ((dígito_real, dígito_previsto), contagem_erros).
     """
-    cm = confusion_matrix(y_true, y_pred)
+    cm = confusion_matrix(y_true, y_pred, labels=np.arange(10))
     np.fill_diagonal(cm, 0)
 
     confusions = [
