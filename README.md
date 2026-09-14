@@ -128,10 +128,10 @@ A ideia aqui foi deixar o código em si acessível para a comunidade desenvolved
 
 ## 🎬 Vídeo sobre o projeto:
 
-[Vídeo]()
+[Vídeo](https://drive.google.com/file/d/1Blre8aXBabKldGn0-dHW4c0aJPTsumXk/view?usp=sharing)
 <sub>*Dica: Segure Ctrl / Cmd ao clicar para abrir o vídeo em uma nova aba.*</sub>
 
-## Melhorias possíveis para o projeto:
+## 🔮 Melhorias possíveis para o projeto:
 
 - Teste de inferência com imagens de letras: para melhor avaliar a capacidade do modelo em lidar com dados fora da distribuição (OOD).
 
