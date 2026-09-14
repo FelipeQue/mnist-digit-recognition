@@ -216,3 +216,18 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Raw data files
+data/raw/*
+!data/raw/.gitkeep
+
+# KerasTuner logs & checkpoints
+keras_tuning_logs/
+keras_tuner_dir/
+*.h5
+*.keras
+
+!outputs/models/best_mlp_model.keras
+
+#MacOS Stuff
+.DS_Store
